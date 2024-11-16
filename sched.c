@@ -25,8 +25,8 @@ int queue_empty(void) {
 
 void init_scheduler(void) {
 #ifdef MLQ_SCHED
-    int i ;
-
+   int i ;
+	
 	for (i = 0; i < MAX_PRIO; i ++)
 		mlq_ready_queue[i].size = 0;
 #endif
