@@ -436,13 +436,12 @@ struct vm_rg_struct* get_vm_area_node_at_brk(struct pcb_t *caller, int vmaid, in
     free(newrg);
     return NULL;
   }
-  if(cur_vma->sbrk + alignedsz > cur_vma->vm_end || cur_vma - alignedsz < cur_vma->vm_start){
+  if(cur_vma->sbrk + alignedsz > cur_vma->vm_end || (cur_vma - alignedsz)->vm_start < cur_vma->vm_start){
     free(newrg);
     return NULL;
   }
   newrg->rg_start = cur_vma->vm_start;
   newrg->rg_end = cur_vma->vm_end;
-  newrg->rg_next = cur_vma->vm_next;
   return newrg;
 }
 
